@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "303234411910",
+    "project_id": "expo--signin-firebase-9a8cc",
+    "storage_bucket": "expo--signin-firebase-9a8cc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:303234411910:android:8b5c11f821c0440b95d007",
+        "android_client_info": {
+          "package_name": "com.eldy.login"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "303234411910-8tk2q4k128lehtta0nt7pqi16spucud4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.eldy.login",
+            "certificate_hash": "14803497c14ccf7b6a9a26ef9580f699df415bd2"
+          }
+        },
+        {
+          "client_id": "303234411910-o14q47hrkme9c90tfaccjhj42gvip65h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB8HeLo-lcRnQKBab0kuBTgVzh1DoFq_v0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "303234411910-o14q47hrkme9c90tfaccjhj42gvip65h.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "303234411910-icqijgvcdlo1305fh0kugrvstkad6h9u.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.eldy.login"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

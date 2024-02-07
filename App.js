@@ -41,8 +41,14 @@ export default function App() {
     try {
       await GoogleSignin.hasPlayServices();
       const user = await GoogleSignin.signIn();
-      setUserInfo(user);
-      setError(null);
+      if (user.user.email === 'posyanduedellweis@gmail.com') {
+        setUserInfo(user);
+        setError(null);
+      } else {
+        await GoogleSignin.revokeAccess();
+        await GoogleSignin.signOut();
+        setError('Hanya akun admin posyandu yang dapat login admin');
+      }
     } catch (e) {
       setError(e.message || "An error occurred");
     }

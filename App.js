@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { Button, StyleSheet, Text, View } from "react-native";
+import { Button, Image, ImageBackground, StyleSheet, Text, View } from "react-native";
 import {
   GoogleSignin,
   GoogleSigninButton,
@@ -50,7 +50,7 @@ export default function App() {
         setError('Hanya akun admin posyandu yang dapat login admin');
       }
     } catch (e) {
-      setError(e.message || "An error occurred");
+      setError('Login gagal. Silakan coba lagi.');
     }
   };
 
@@ -69,28 +69,59 @@ export default function App() {
   };
 
   return (
-    <View style={styles.container}>
-      <Text>{error}</Text>
-      {userInfo && <Text>{JSON.stringify(userInfo.user)}</Text>}
-      {userInfo ? (
-        <Button title="Logout" onPress={logout} />
-      ) : (
-        <GoogleSigninButton
-          size={GoogleSigninButton.Size.Standard}
-          color={GoogleSigninButton.Color.Dark}
-          onPress={signin}
-        />
-      )}
-      <StatusBar style="auto" />
-    </View>
+    <ImageBackground source={require('./assets/background.jpg')} style={styles.background}>
+      <View style={styles.container}>
+        {userInfo ? (
+          <>
+            <Image source={{ uri: userInfo.user.photo }} style={styles.profileImage} />
+            <Text>{userInfo.user.givenName}</Text>
+            <Button title="Masuk aplikasi" onPress={signin} />
+            <Button title="Logout" onPress={logout} />
+          </>
+        ) : (
+          <>
+            <Text>{error}</Text>
+            <Text style={styles.adminText}>Login sebagai admin</Text>
+            <GoogleSigninButton
+              size={GoogleSigninButton.Size.Standard}
+              color={GoogleSigninButton.Color.Dark}
+              onPress={signin}
+            />
+            <View style={styles.buttonContainer}>
+              <Button title="Masuk sebagai user" onPress={signin} />
+            </View>
+          </>
+        )}
+        <StatusBar style="auto" />
+      </View>
+    </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
+  background: {
+    flex: 1,
+    resizeMode: "cover",
+    justifyContent: "center"
+  },
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: 'rgba(255, 255, 255, 0.5)', // Warna latar belakang dengan opasitas 50%
     alignItems: "center",
     justifyContent: "center",
   },
+  adminText: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 20,
+  },
+  profileImage: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    marginBottom: 10,
+  },
+  buttonContainer: {
+    marginTop: 20,
+  }
 });

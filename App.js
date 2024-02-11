@@ -1,40 +1,25 @@
-import { StatusBar } from "expo-status-bar";
 import { Button, Image, ImageBackground, StyleSheet, Text, View } from "react-native";
 import {
   GoogleSignin,
   GoogleSigninButton,
 } from "@react-native-google-signin/google-signin";
-import { useEffect, useState, useRef } from "react";
-import * as Notifications from 'expo-notifications';
+import { useEffect, useState } from "react";
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import UserPage from './UserPage'; // Mengimpor komponen UserPage
+import AdminPage from './AdminPage'; // Mengimpor komponen AdminPage
+
+const Stack = createStackNavigator();
 
 export default function App() {
   const [error, setError] = useState(null);
   const [userInfo, setUserInfo] = useState(null);
-  const [expoPushToken, setExpoPushToken] = useState('');
-  const [notification, setNotification] = useState(false);
-  const notificationListener = useRef();
-  const responseListener = useRef();
 
   useEffect(() => {
     GoogleSignin.configure({
       webClientId:
         "303234411910-o14q47hrkme9c90tfaccjhj42gvip65h.apps.googleusercontent.com",
     });
-
-    registerForPushNotificationsAsync().then(token => setExpoPushToken(token));
-
-    notificationListener.current = Notifications.addNotificationReceivedListener(notification => {
-      setNotification(notification);
-    });
-
-    responseListener.current = Notifications.addNotificationResponseReceivedListener(response => {
-      console.log(response);
-    });
-
-    return () => {
-      Notifications.removeNotificationSubscription(notificationListener.current);
-      Notifications.removeNotificationSubscription(responseListener.current);
-    };
   }, []);
 
   const signin = async () => {
@@ -64,10 +49,20 @@ export default function App() {
     }
   };
 
-  const registerForPushNotificationsAsync = async () => {
-    // Implement your notification registration logic here
-  };
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" options={{ headerShown: false }}>
+          {props => <Home {...props} userInfo={userInfo} signin={signin} logout={logout} error={error} />}
+        </Stack.Screen>
+        <Stack.Screen name="UserPage" component={UserPage} options={{ title: 'User Page' }} />
+        <Stack.Screen name="AdminPage" component={AdminPage} options={{ title: 'Admin Page' }} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
 
+function Home({ navigation, userInfo, signin, logout, error }) {
   return (
     <ImageBackground source={require('./assets/background.jpg')} style={styles.background}>
       <View style={styles.container}>
@@ -75,7 +70,7 @@ export default function App() {
           <>
             <Image source={{ uri: userInfo.user.photo }} style={styles.profileImage} />
             <Text>{userInfo.user.givenName}</Text>
-            <Button title="Masuk aplikasi" onPress={signin} />
+            <Button title="Masuk aplikasi" onPress={() => navigation.navigate('AdminPage')} />
             <Button title="Logout" onPress={logout} />
           </>
         ) : (
@@ -88,11 +83,10 @@ export default function App() {
               onPress={signin}
             />
             <View style={styles.buttonContainer}>
-              <Button title="Masuk sebagai user" onPress={signin} />
+              <Button title="Masuk sebagai peserta" onPress={() => navigation.navigate('UserPage')} />
             </View>
           </>
         )}
-        <StatusBar style="auto" />
       </View>
     </ImageBackground>
   );

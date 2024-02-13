@@ -1,3 +1,5 @@
+// App.js
+
 import { Button, Image, ImageBackground, StyleSheet, Text, View } from "react-native";
 import {
   GoogleSignin,
@@ -70,8 +72,11 @@ function Home({ navigation, userInfo, signin, logout, error }) {
           <>
             <Image source={{ uri: userInfo.user.photo }} style={styles.profileImage} />
             <Text>{userInfo.user.givenName}</Text>
-            <Button title="Masuk aplikasi" onPress={() => navigation.navigate('AdminPage')} />
-            <Button title="Logout" onPress={logout} />
+            <View style={styles.buttonContainer}>
+              <Button title="Masuk aplikasi" onPress={() => navigation.navigate('AdminPage')} />
+              <View style={styles.buttonSpacing} />
+              <Button title="Logout" onPress={logout} />
+            </View>
           </>
         ) : (
           <>
@@ -117,5 +122,8 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     marginTop: 20,
+  },
+  buttonSpacing: {
+    marginVertical: 10,
   }
 });

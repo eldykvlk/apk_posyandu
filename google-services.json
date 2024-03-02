@@ -1,48 +1,48 @@
 {
   "project_info": {
-    "project_number": "303234411910",
-    "project_id": "expo--signin-firebase-9a8cc",
-    "storage_bucket": "expo--signin-firebase-9a8cc.appspot.com"
+    "project_number": "212561971443",
+    "project_id": "posyandu-apk",
+    "storage_bucket": "posyandu-apk.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:303234411910:android:8b5c11f821c0440b95d007",
+        "mobilesdk_app_id": "1:212561971443:android:dab27819f6f3ce1a6f8f86",
         "android_client_info": {
-          "package_name": "com.eldy.login"
+          "package_name": "com.posyandu.firebase"
         }
       },
       "oauth_client": [
         {
-          "client_id": "303234411910-8tk2q4k128lehtta0nt7pqi16spucud4.apps.googleusercontent.com",
+          "client_id": "212561971443-pghfkt1dj103qatnbvm6snm4hvfr8p8l.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.eldy.login",
-            "certificate_hash": "14803497c14ccf7b6a9a26ef9580f699df415bd2"
+            "package_name": "com.posyandu.firebase",
+            "certificate_hash": "49e5a7aef6cc32504783a6c787c11fa9a651e795"
           }
         },
         {
-          "client_id": "303234411910-o14q47hrkme9c90tfaccjhj42gvip65h.apps.googleusercontent.com",
+          "client_id": "212561971443-9qshupddu0dr8di8unki67c84jn3pbfr.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyB8HeLo-lcRnQKBab0kuBTgVzh1DoFq_v0"
+          "current_key": "AIzaSyCyzrDC2e6poyVZSLysJNhBeeroiLPerVw"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "303234411910-o14q47hrkme9c90tfaccjhj42gvip65h.apps.googleusercontent.com",
+              "client_id": "212561971443-9qshupddu0dr8di8unki67c84jn3pbfr.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "303234411910-icqijgvcdlo1305fh0kugrvstkad6h9u.apps.googleusercontent.com",
+              "client_id": "212561971443-30qihrtics7u7ifs6asdooam9pc3a5b9.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.eldy.login"
+                "bundle_id": "com.posyandu.firebase"
               }
             }
           ]

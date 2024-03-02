@@ -1,7 +1,7 @@
 export default {
   expo: {
-    name: "login",
-    slug: "login",
+    name: "posyandu",
+    slug: "posyandu",
     version: "1.0.0",
     orientation: "portrait",
     icon: "./assets/icon.png",
@@ -15,28 +15,26 @@ export default {
     assetBundlePatterns: ["**/*"],
     ios: {
       supportsTablet: true,
-      bundleIdentifier: "com.eldy.login",
-      googleServicesFile: "./google-services.json",
+      bundleIdentifier: "com.posyandu.firebase",
+      googleServicesFile: process.env.GOOGLE_SERVICES_INFOPLIST,
     },
     android: {
-
       adaptiveIcon: {
         foregroundImage: "./assets/adaptive-icon.png",
         backgroundColor: "#ffffff",
       },
-      package: "com.eldy.login",
+      package: "com.posyandu.firebase",
       googleServicesFile: "./google-services.json",
+      permissions: ["WRITE_EXTERNAL_STORAGE", "ACCESS_FINE_LOCATION"], // Tambahkan izin akses lokasi
     },
     web: {
       favicon: "./assets/favicon.png",
+      geolocation: "true", // Aktifkan geolocation di web
     },
     extra: {
       eas: {
-        projectId: "df276d73-6386-467c-94d4-27e2ff655aca",
+        projectId: "413c1e0e-4282-474c-a536-2625d4560787",
       },
     },
   },
 };
-
-// process.env.GOOGLE_SERVICES_INFOPLIST
-// process.env.GOOGLE_SERVICES_JSON
